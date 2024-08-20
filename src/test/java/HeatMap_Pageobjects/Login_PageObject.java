@@ -26,28 +26,21 @@ public class Login_PageObject {
 @CacheLookup
 WebElement EmailId;
 
-//@FindBy(how = How.XPATH, using="//footer[@class='sessionFormFooter']/button")
-////@FindBy(how = How.XPATH,using="//button[text()='Continue']")////button[@class='btnCta glintButton']   ////button[@class='btnCta glintButton']
-//@CacheLookup
-//WebElement Continue_Button;
+
 
 
 @FindBy(how = How.ID, using="clientUuid")
 @CacheLookup
 WebElement ClientId;
 
-//@FindBy(how = How.XPATH, using="//button[@translate='session.continueButton']")
-//@CacheLookup
-//WebElement companyid_continueButton;
+
 
 
 @FindBy(how = How.ID, using="password")
 @CacheLookup
 WebElement Password;
 
-//@FindBy(how = How.XPATH, using="//button[@class='btnCta glintButton']")
-//@CacheLookup
-//WebElement password_continueButton;
+
 
 
 public WebElement continue_button()
@@ -79,20 +72,7 @@ public void enter_password(String pswd)
 	Password.sendKeys(pswd);
 }
 
-//public void click_continue_button()
-//{
-//	Continue_Button.click();
-//}
-//
-//public void click_companyContinue_button() {
-//
-//	companyid_continueButton.click();
-//}
-//	
-//
-//public void click_PasswordContinue_button() {
-//	password_continueButton.click();
-//}
+
 
 
 public void setContinuebutton()
