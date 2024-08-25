@@ -17,38 +17,25 @@ import org.testng.Assert;
 
 public class heatmap_filters_pageobject {
 	
-	
 	public WebDriver driver;
 	
 	public  String ActualTitle;
 	
 	public String ExpectedTitle;
 	
-	//public  String getActualTitle;
 	
-		
-	public heatmap_filters_pageobject(WebDriver newdriver)
+public heatmap_filters_pageobject(WebDriver newdriver)
 	{
 		driver=newdriver;
 		PageFactory.initElements( newdriver,this);
 	}
+		
+                                             //view Report part	
 	
-
-	
-//view Report part	
-	
-	
-	
-@FindBy(how = How.XPATH, using="//span[text()=' Discretionary Effort ']")
+@FindBy(how = How.XPATH, using="(//div[@data-label='Question'])[4]")
 @CacheLookup
-WebElement Qus_DiscretionaryEffort;
+WebElement qus4;	
 
-@FindBy(how = How.XPATH, using="(//span[@class='heatmapCell score ng-star-inserted'])[3]")
-@CacheLookup
-WebElement DiscretionaryEffort_score ;	
-
-
-//@FindBy(how = How.XPATH, using="//span[text()=' View Report ']")
 @FindBy(how = How.XPATH, using="//li[@data-value='ViewReport']")
 @CacheLookup
 WebElement viewReport;	
@@ -58,21 +45,21 @@ WebElement viewReport;
 WebElement takeAction;	
 
 
-//change surevy 
+                                      //change survey 
 
 @FindBy(how = How.XPATH, using="//div[@class='menuContainer applyMaxWidthMenuContainer']")
 @CacheLookup
 WebElement changeSurevy_dropdown;	
 	
 
-@FindBy(how = How.XPATH, using="//li[@aria-label='December 2023 R67 ODSP NOTIFY Pulse']")
+@FindBy(how = How.ID, using="option1")
 @CacheLookup
-WebElement select_decSurevy;	
+WebElement select_Surevy;	
 	
-//Filter Locators	
+                                       //Filter Locators	
 	
 	
-@FindBy(how = How.XPATH, using="//button[@class='btnWithVgIcon subtleBtn footerButton glintButton ng-star-inserted']")
+@FindBy(how = How.XPATH, using="//button[@class='addFilterButtonPanel ng-star-inserted']")
 @CacheLookup
 WebElement filter;
 
@@ -84,10 +71,6 @@ WebElement Addfilter;
 @CacheLookup
 WebElement Agefilter;
 
-//@FindBy(how = How.XPATH, using="(//label[@data-id='filterEditorValueLabel'])[2]")//(//label[@data-id="filterEditorValueLabel"])[2]
-//@FindBy(how = How.XPATH, using="(//div[@class='filterEditorRow ng-star-inserted'])[1]")
-
-//@FindBy(how = How.XPATH, using="//input[@class='ng-pristine ng-valid ng-touched']")
 
 @FindBy(how = How.XPATH, using="(//label[@data-id='filterEditorValueLabel'])[2]")
 @CacheLookup
@@ -101,69 +84,55 @@ WebElement doneButton;
 @CacheLookup
 WebElement closefilterIcon;
 
-// Mousehover for score
+                                     // Mouse hover for score
 
-@FindBy(how = How.XPATH, using="//button[@class='content BUCKET_2 ng-star-inserted']")
+@FindBy(how = How.XPATH, using="(//button[@class='content BUCKET_2 ng-star-inserted'])[2]")
 @CacheLookup
 WebElement mouse_hover;
 
-
-@FindBy(how = How.XPATH, using="//div[@class='tooltipContent visible']")
+@FindBy(how = How.XPATH, using="//div[@data-id='glintTooltip']")
 @CacheLookup
 WebElement mousehover_Score;
 
 
-// move after section
+                                        // move after section
 
 @FindBy(how = How.XPATH, using="(//button[@class='moveActionMenuButton popupMenuButton btnIcon glintButton'])[5]")
 @CacheLookup
 WebElement moveafter_dropdown;
 
-//@FindBy(how = How.XPATH, using="//i[@class='right glintIcon ng-star-inserted']")
-//@FindBy(how = How.XPATH, using="//li[@data-value='MoveAfter']")
 @FindBy(how = How.XPATH, using="//span[text()=' Move After ']")
 @CacheLookup
 WebElement moveafter;
 
-
-@FindBy(how = How.XPATH, using="(//button[@class='subMenuItemButton'])[3]")
+@FindBy(how = How.XPATH, using="(//button[@class='subMenuItemButton'])[1]")
 @CacheLookup
 WebElement moveafter_question;
 
+                                        //view report method
 
-
-
-//view report method
-
-public void click_Qus_DiscretionaryEffort() throws InterruptedException {
-	
+public void click_Qus_Basepay() throws InterruptedException 
+{
 	
 	JavascriptExecutor js = (JavascriptExecutor) driver;
     js.executeScript("window.scrollBy(0,250)", "");
     
     Thread.sleep(3000);
     
-    Qus_DiscretionaryEffort.click();
+    qus4.click();
 }
 
 public void click_viewReport() throws InterruptedException 
 {
 	Thread.sleep(3000);
-    viewReport.click();
-    
-
+    viewReport.click();   
 }
-
-
-
 public void click_takeAction()
 {
-    
-	takeAction.click();
+    takeAction.click();
 }
 
-//filters method
-
+                                        //filters method
 
 public void click_filter() 
 {
@@ -178,9 +147,7 @@ public void click_addfilter()
 public void click_agefilter() 
 {
 
-	Agefilter.click();
-	
-	
+	Agefilter.click();	
 }
 public void select_ageNumber() 
 {
@@ -197,7 +164,7 @@ public void click_closefiltericon()
 }
 
 
-// MOUSEHOVER METHOD
+                                          // MOUSE HOVER METHOD
 
 public void MouseHover_action() 
 {
@@ -212,7 +179,9 @@ public void get_mouseHoverSCORE()
 	System.out.println(mousehover_Score.getText());
 	
 	String ActualTitle = mousehover_Score.getText();
-	String ExpectedTitle =("Score 50\r\n"+"Company 50\r\n"+"Pulsed on Dec 20, 2023");
+	//String ExpectedTitle =("Score 50\r\n"+"Company 50\r\n"+"Pulsed on Dec 20, 2023");
+	String ExpectedTitle =("Score 50\r\n"
+			+ "Pulsed on Oct 13, 2019");
 	Assert.assertEquals(ActualTitle , ExpectedTitle);
 	
 //	String getActualTitle = mousehover_Score.getText();
@@ -222,7 +191,7 @@ public void get_mouseHoverSCORE()
 }
 
 
-// moveafter method
+                                              // move after method
 
 public void click_dropdown_moveAfter() 
 {
@@ -234,12 +203,12 @@ public void click_moveAfter()
 	moveafter.click();
 }
 
-
 public void select_onequestion_formoveAfter() 
 {
 	moveafter_question.click();
 }
 
+                                           // change survey method
 
 public void click_surveyDropdown() throws InterruptedException 
 {
@@ -250,6 +219,7 @@ public void click_surveyDropdown() throws InterruptedException
 public void select_decemberSurvey() throws InterruptedException 
 {
 	Thread.sleep(3000);
-	select_decSurevy.click();
+	System.out.println(select_Surevy.getText());
+	select_Surevy.click();
 }
 }

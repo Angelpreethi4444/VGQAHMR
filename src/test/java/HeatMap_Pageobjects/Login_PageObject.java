@@ -26,21 +26,13 @@ public class Login_PageObject {
 @CacheLookup
 WebElement EmailId;
 
-
-
-
 @FindBy(how = How.ID, using="clientUuid")
 @CacheLookup
 WebElement ClientId;
 
-
-
-
 @FindBy(how = How.ID, using="password")
 @CacheLookup
 WebElement Password;
-
-
 
 
 public WebElement continue_button()
@@ -48,9 +40,6 @@ public WebElement continue_button()
     WebElement cbutton = driver.findElement(By.xpath("//button[@class='btnCta glintButton']"));
      return cbutton;
 }
-
-
-
 
 // Method Declaration for each locators
 
@@ -73,30 +62,10 @@ public void enter_password(String pswd)
 }
 
 
-
-
 public void setContinuebutton()
 {
 	continue_button().click();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

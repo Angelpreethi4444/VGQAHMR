@@ -1,5 +1,6 @@
 package HeatMap_Pageobjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -14,11 +15,10 @@ public class ReportDashboardPageobject {
 	public ReportDashboardPageobject(WebDriver newdriver) 
 	{
 		driver=newdriver;
-		PageFactory.initElements(newdriver, this);
+		PageFactory.initElements(newdriver, this);;
 	}
 	
-@FindBy(how = How.XPATH, using="//a[text()=' Reports ']")
-
+@FindBy(how = How.ID, using="tab-4")
 @CacheLookup
 WebElement reportsDashboard;
 
@@ -26,7 +26,8 @@ WebElement reportsDashboard;
 @CacheLookup
 WebElement searchSurvey;
 
-@FindBy(how = How.CLASS_NAME,using="facet indent ng-star-inserted")
+
+@FindBy(how = How.XPATH, using="//span[@class='facetListRow noCount']")
 @CacheLookup
 WebElement recurring_Survey;
 
@@ -34,6 +35,21 @@ WebElement recurring_Survey;
 @CacheLookup
 WebElement heatmapReport;
 
+@FindBy(how = How.XPATH, using="(//button[@class='btnIcon delete glintButton ng-star-inserted'])[9]")
+@CacheLookup
+WebElement deleteReport;
+
+@FindBy(how = How.XPATH, using="//button[@class='glintButton btnAlert']")
+@CacheLookup
+WebElement deletebutton;
+
+@FindBy(how = How.XPATH, using="//a[@data-type='next']")
+@CacheLookup
+WebElement nextbutton;
+
+@FindBy(how = How.XPATH, using="(//span[@class='facetListRow'])[3]")
+@CacheLookup
+WebElement reportcount;
 
 
 
@@ -52,10 +68,32 @@ public void click_recurringSurvey()
 public void click_heatmapReport() 
 {
 	heatmapReport.click();
-	
-	
 }
 	
+public void deletereport_method() 
+{
 	
+    
+	deleteReport.click();
+}
+
+public void deletebutton_method() 
+{
+	deletebutton.click();
+}
+
+public void nextbutton_method() 
+{
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,1000)", "");
+	nextbutton.click();
+}
+
+public void reportcount_method() 
+{
+	System.out.println(reportcount.getText());
+}
+
+
 
 }

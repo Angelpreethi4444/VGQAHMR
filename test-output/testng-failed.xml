@@ -6,7 +6,7 @@
       <class name="HeatMap_TestFunction.Login_Testfuction">
         <methods>
           <include name="launchBrowser"/>
-          <include name="getPageTitle"/>
+          <include name="TakeAction_Goal"/>
         </methods>
       </class> <!-- HeatMap_TestFunction.Login_Testfuction -->
     </classes>

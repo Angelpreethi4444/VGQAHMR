@@ -16,20 +16,18 @@ public class Save_heatmapReport {
 	
 	public WebDriver driver;
 	
-	public Save_heatmapReport(WebDriver newdriver) {
-		
+	public Save_heatmapReport(WebDriver newdriver) 
+{
 		driver=newdriver;
 		PageFactory.initElements(newdriver,this);
-	}
+}
 	
-
-//@FindBy(how = How.XPATH,using="//div[@aria-label='Report Export Options Menu']")
 	
 @FindBy(how = How.XPATH,using="//glint-dropdown[@id='reportExportDropdown']")
 @CacheLookup
 WebElement saveAs_dropdown;	
-	
-	
+
+
 @FindBy(how = How.XPATH,using="//li[@data-value='SAVE_AS']")
 @CacheLookup
 WebElement saveAs_Button;
@@ -42,11 +40,18 @@ WebElement Reportname;
 @CacheLookup
 WebElement saveButton;
 
-@FindBy(how = How.XPATH,using="//glint-back-button[@class='backButton ng-star-inserted']")
+@FindBy(how = How.XPATH,using="//span[text()='Go Back']")
 @CacheLookup
 WebElement goBackButton;
 
-//assert verify text
+@FindBy(how= How.XPATH, using="//h3[text()='Base Pay Satisfaction Historical Trend']")
+@CacheLookup
+WebElement goal_text1;
+
+@FindBy(how= How.XPATH, using="//h4[text()=' 376 (100%) Responded in Oct ']")
+@CacheLookup
+WebElement goal_text2;
+                                            //assert verify text
 
 
 //@FindBy(how = How.XPATH, using="//h1[text()=' Exec Summary ']")
@@ -64,10 +69,12 @@ public WebElement reportText_assertVerify()
 public void assertverify_method() 
 {
 	String getActualTitle = reportText_assertVerify().getText();
-    Assert.assertEquals(getActualTitle ,"Exec Summary");
+	
+    Assert.assertEquals(getActualTitle ,"Executive Summary");
     
     System.out.println(reportText_assertVerify().getText());
-    
+    System.out.println(goal_text1.getText());
+    System.out.println(goal_text2.getText());
 }
 
 
@@ -81,10 +88,6 @@ public void click_saveAsDropdown() throws InterruptedException
 public void click_saveAsButton() throws InterruptedException 
 {
 	Thread.sleep(3000);
-//Select s= new Select(saveAs_dropdown);
-//s.selectByIndex(5);
-	
-	
 	saveAs_Button.click();
 }
 
@@ -92,25 +95,17 @@ public void click_saveAsButton() throws InterruptedException
 public void Add_reportName(String save_reportname)
 {
 	Reportname.clear();
-	
-	Reportname.sendKeys(save_reportname);
-	
-	
-	
+	Reportname.sendKeys(save_reportname);	
 }
 
 public void Click_saveButton()
 {
-	
 	saveButton.click();
-
 }
 
 public void Click_goBack()
 {
-	
 	goBackButton.click();
-
 }
 
 
