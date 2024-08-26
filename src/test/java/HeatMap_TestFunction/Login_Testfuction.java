@@ -24,11 +24,8 @@ public void getPageTitle()
 
 @Test
 public void launchHeatmap() throws InterruptedException 
-{
-	Thread.sleep(5000);	
-	
+{	
 	open_heatmapReport();
-	
 	changesurevy_method();
 }
 
@@ -36,19 +33,12 @@ public void launchHeatmap() throws InterruptedException
 @Test
 public void ViewReport_Heatmap() throws InterruptedException
 {
-	
 	open_heatmapReport();
-	
 	changesurevy_method();
-	
 	Thread.sleep(3000);
-	
 	viewReport_method();
-
     driver.navigate().back();
-    
     Thread.sleep(3000);
-    
     driver.navigate().refresh();
 }
 
@@ -56,20 +46,13 @@ public void ViewReport_Heatmap() throws InterruptedException
 public void TakeAction_Goal() throws InterruptedException 
 {
 	open_heatmapReport();
-	
 	changesurevy_method();
 	Thread.sleep(3000);
-	
 	takeAction_method();
-	
-    Thread.sleep(3000);
-    
+	Thread.sleep(3000);
     get_GoalTitle();
-    
     Thread.sleep(3000);
-    
     driver.navigate().back();
-    
     driver.navigate().refresh();
 }
 
@@ -87,26 +70,22 @@ public void saveHeatmap_Report() throws InterruptedException
 
 @Test
 
-public void deleteAction_Report() throws InterruptedException
+public void delete_savedReports() throws InterruptedException
 {
 	deletereport();
 }
 
 
-
 @Test
-public void select_ageFilters() throws InterruptedException
+public void select_Filters() throws InterruptedException
 {
 	open_heatmapReport();
-	
-	Add_filterMethod();
-	
-	System.out.println(driver.findElement(By.xpath("//span[@class='errorText ng-star-inserted']")).getText());
+	Addfilter_report();
 }
 
 
 @Test
-public void mouseHover_actionmethod() throws InterruptedException 
+public void get_mouseHover_score() throws InterruptedException 
 {
 	open_heatmapReport();
 	changesurevy_method();
@@ -122,4 +101,35 @@ public void set_moveAfter_Question() throws InterruptedException
 	moveafter_method();
 }
 
+@Test
+public void get_Ungrouped_qus() throws InterruptedException 
+{	
+	open_heatmapReport();
+	changesurevy_method();
+	select_ungrouped();
+}
+
+@Test
+public void set_Editsection() throws InterruptedException
+{
+	open_heatmapReport();
+	changesurevy_method();
+	edit_Report();
+}
+
+@Test
+public void set_AddsectionandRemove() throws InterruptedException
+{
+	open_heatmapReport();
+	changesurevy_method();
+	addsection_report_RemoveReport();
+}
+
+@Test
+public void Add_benchmarklinkReport() throws InterruptedException
+{
+	open_heatmapReport();
+	changesurevy_method();
+	benchmark_reportlink();
+}
 }

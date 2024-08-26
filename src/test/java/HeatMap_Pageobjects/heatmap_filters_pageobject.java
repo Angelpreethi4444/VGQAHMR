@@ -67,12 +67,12 @@ WebElement filter;
 @CacheLookup
 WebElement Addfilter;
 
-@FindBy(how = How.XPATH, using="//div[text()='Age']")
+@FindBy(how = How.XPATH, using="//div[text()='Birth Year']")
 @CacheLookup
-WebElement Agefilter;
+WebElement Birthyear_filter;
 
 
-@FindBy(how = How.XPATH, using="(//label[@data-id='filterEditorValueLabel'])[2]")
+@FindBy(how = How.XPATH, using="//div[@class='filterEditorRow ng-star-inserted']")
 @CacheLookup
 WebElement AgeNumber;
 
@@ -109,7 +109,93 @@ WebElement moveafter;
 @CacheLookup
 WebElement moveafter_question;
 
-                                        //view report method
+                                          // Ungrouped element
+
+@FindBy(how = How.XPATH, using="(//input[@type='radio'])[2]")
+@CacheLookup
+WebElement Ungrouped;
+                                          //edit section
+
+@FindBy(how = How.XPATH, using="(//div[@aria-label='undefinedmenu'])[2]")
+@CacheLookup
+WebElement threedot;
+
+@FindBy(how = How.XPATH, using="//li[@data-value='EDIT']")
+@CacheLookup
+WebElement editbutton;
+
+@FindBy(how = How.XPATH, using="(//div[@aria-haspopup='listbox'])[12]")
+@CacheLookup
+WebElement editdropdown;
+
+@FindBy(how = How.XPATH, using="//li[@id='option1']")
+@CacheLookup
+WebElement editdropdown_option;
+
+@FindBy(how = How.XPATH, using="//div[@aria-labelledby='heatmapCellMetricConfigurationLabel']")
+@CacheLookup
+WebElement scoresdropdown;
+
+@FindBy(how = How.ID , using="option4")
+@CacheLookup
+WebElement scoresdropdown_option;
+
+@FindBy(how = How.XPATH, using="//div[@class='slideyHeaderTools']")
+@CacheLookup
+WebElement Donebutton;
+ 
+                                              //add section and delete section
+
+@FindBy(how = How.XPATH, using="//div[@aria-label='Report Actions Menu']")
+@CacheLookup
+WebElement MoreDropdown;
+
+@FindBy(how = How.XPATH, using="//li[@aria-label='Add section']")
+@CacheLookup
+WebElement addSection;
+
+@FindBy(how = How.XPATH, using="//div[@data-id='QUESTION_OVERVIEW']")
+@CacheLookup
+WebElement addSection_survey;
+
+@FindBy(how = How.XPATH, using="//div[@aria-label='Key Outcomemenu']")
+@CacheLookup
+WebElement addedSurvey_threeDot;
+
+@FindBy(how = How.XPATH, using="//li[@aria-label='Remove']")
+@CacheLookup
+WebElement removeButton;
+
+                                                   //benchmark link
+@FindBy(how = How.XPATH, using="//button[@class='inlineBtnLink currentBenchmark glintButton ng-star-inserted']")
+@CacheLookup
+WebElement benchmark_link;
+
+@FindBy(how = How.XPATH, using="(//label[@class='label ng-star-inserted'])[2]")
+@CacheLookup
+WebElement benchmark_text;
+ 
+@FindBy(how = How.XPATH, using="(//div[@class='radioOption ng-star-inserted'])[3]")
+@CacheLookup
+WebElement internal_benchmarkt;
+
+@FindBy(how = How.XPATH, using="(//label[@class='radioLabel'])[10]")
+@CacheLookup
+WebElement external_benchmarkt;
+
+@FindBy(how = How.XPATH, using="//button[@class='btnCta glintButton']")
+@CacheLookup
+WebElement Donebutton_benchmark;
+                                              //export report
+
+@FindBy(how = How.XPATH, using="//div[@aria-label='Report Export Options Menu']")
+@CacheLookup
+WebElement exportButton;
+
+@FindBy(how = How.XPATH, using="//li[@id='option0']")
+@CacheLookup
+WebElement export_PPT;
+                                                   //view report method
 
 public void click_Qus_Basepay() throws InterruptedException 
 {
@@ -134,24 +220,32 @@ public void click_takeAction()
 
                                         //filters method
 
-public void click_filter() 
+public void click_filter_method() 
 {
 	filter.click();
 }
 
-public void click_addfilter() 
+public void click_addfilter_method() 
 {
 	Addfilter.click();
 }
 
-public void click_agefilter() 
+public void click_birthyear_filter_method() 
 {
 
-	Agefilter.click();	
+	Birthyear_filter.click();	
 }
 public void select_ageNumber() 
 {
-		AgeNumber.click();
+	List<WebElement> els = driver.findElements(By.xpath("//input[@type='checkbox']"));
+	for ( WebElement el : els ) 
+	{
+//    if (el.getAttribute("value").equals(" 1998 ")||(el.getAttribute("value")).equals(" 1999 "))
+//	    {
+//	        el.click();
+//	    }
+		el.click();
+	 }
 }
 public void click_doneBtton() 
 {
@@ -162,9 +256,7 @@ public void click_closefiltericon()
 {
 	closefilterIcon.click();
 }
-
-
-                                          // MOUSE HOVER METHOD
+                                         // MOUSE HOVER METHOD
 
 public void MouseHover_action() 
 {
@@ -173,15 +265,13 @@ public void MouseHover_action()
 	action.moveToElement(ele).perform();
 }
 
-
 public void get_mouseHoverSCORE() 
 {
 	System.out.println(mousehover_Score.getText());
 	
 	String ActualTitle = mousehover_Score.getText();
 	//String ExpectedTitle =("Score 50\r\n"+"Company 50\r\n"+"Pulsed on Dec 20, 2023");
-	String ExpectedTitle =("Score 50\r\n"
-			+ "Pulsed on Oct 13, 2019");
+	String ExpectedTitle =("Score 50\r\n"  + "Pulsed on Oct 13, 2019");
 	Assert.assertEquals(ActualTitle , ExpectedTitle);
 	
 //	String getActualTitle = mousehover_Score.getText();
@@ -221,5 +311,106 @@ public void select_decemberSurvey() throws InterruptedException
 	Thread.sleep(3000);
 	System.out.println(select_Surevy.getText());
 	select_Surevy.click();
+}   
+                                               //ungrouped method
+
+public void ungrouped_method() 
+{
+	Ungrouped.click();
+}
+                                             
+                                              //edit section method
+public void threedot_method() 
+{
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,600)", "");
+	threedot.click();
+}
+
+public void editbutton_method() 
+{
+	editbutton.click();
+}
+
+public void editdropdown_method() 
+{
+	editdropdown.click();
+}
+
+public void select_editdropdown_option__method() 
+{
+	editdropdown_option.click();
+}
+
+public void scoresdropdown_method() 
+{
+	scoresdropdown.click();
+}
+
+public void select_scoresdropdown_option_method() 
+{
+	scoresdropdown_option.click();
+}
+public void Donebutton_method() 
+{
+	Donebutton.click();
+}
+public void MoreDropdown_method() 
+{
+	MoreDropdown.click();
+}
+public void addSection_method() 
+{
+	addSection.click();
+}
+                                                    // add section and remove method
+public void addSection_survey_method() 
+{
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,600)", "");
+	addSection_survey.click();
+}
+
+public void addedSurvey_threeDot_method() 
+{
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,1000)", "");
+	addedSurvey_threeDot.click();
+}
+
+public void removeButton_method() 
+{
+	removeButton.click();
+}
+
+                                                         // benchmark link method
+public void click_benchmark_link_method() 
+{
+	benchmark_link.click();
+}
+public void benchmark_text_method() 
+{
+	System.out.println(benchmark_text.getText());
+}
+public void select_internal_benchmark_method() 
+{
+	internal_benchmarkt.click();
+}
+public void select_external_benchmark_method() 
+{
+	external_benchmarkt.click();
+}
+public void click_doneButton_benchmark_method() 
+{
+	Donebutton_benchmark.click();
+}
+                                                       //export method
+public void click_exportButton_method() 
+{
+	exportButton.click();
+}
+public void click_exportPPT_method() 
+{
+	export_PPT.click();
 }
 }

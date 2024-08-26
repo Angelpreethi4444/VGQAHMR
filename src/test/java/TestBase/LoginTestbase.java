@@ -85,14 +85,12 @@ public void open_heatmapReport() throws InterruptedException
 }	
 
 
-public void changesurevy_method() throws InterruptedException {
-	
-	filterpage.click_filter();
+public void changesurevy_method() throws InterruptedException 
+{
+	filterpage.click_filter_method();
 	filterpage.click_surveyDropdown();
 	filterpage.select_decemberSurvey();
-	filterpage.click_closefiltericon();
-	
-	
+	filterpage.click_closefiltericon();	
 }
 
 
@@ -123,25 +121,15 @@ public void get_GoalTitle() throws InterruptedException
 	goalheatmap.Focusarea_Title_method();
 }
 
-public void Add_filterMethod() throws InterruptedException 
+public void Addfilter_report() throws InterruptedException 
 {
-	
 	Thread.sleep(5000);
-	
-	filterpage.click_filter();
-	
-	filterpage.click_addfilter();
-	
-	
-	
-	filterpage.click_agefilter();
-	
+	filterpage.click_filter_method();
+	filterpage.click_addfilter_method();
+	filterpage.click_birthyear_filter_method();
 	driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-	
 	filterpage.select_ageNumber();
-	
 	filterpage.click_doneBtton();
-	
 	filterpage.click_closefiltericon();
 }
 
@@ -149,22 +137,13 @@ public void Add_filterMethod() throws InterruptedException
 
 public void saveAS_Report_method() throws InterruptedException
 {
-	
 	savereportpage.click_saveAsDropdown();
-	
-	
 	savereportpage.click_saveAsButton();
-	
-	
 	Thread.sleep(3000);
-	
 	savereportpage.Add_reportName("R75 REPORT");
-	
 	savereportpage.Click_saveButton();
 	Thread.sleep(3000);
-		
 	savereportpage.Click_goBack();
-	
 }
 
 public void deletereport() throws InterruptedException 
@@ -184,9 +163,7 @@ public void deletereport() throws InterruptedException
 public void mouseHover_method() throws InterruptedException 
 {
 	Thread.sleep(3000);
-	
 	filterpage.MouseHover_action();
-	
 	Thread.sleep(3000);
 	filterpage.get_mouseHoverSCORE();
 }
@@ -202,5 +179,54 @@ public void moveafter_method() throws InterruptedException
 	filterpage.select_onequestion_formoveAfter();
 }
 
+public void select_ungrouped() throws InterruptedException 
+{
+	filterpage.ungrouped_method();
+}
 
+public void edit_Report() throws InterruptedException 
+{
+	filterpage.threedot_method();
+	Thread.sleep(3000);
+	filterpage.editbutton_method();
+	Thread.sleep(3000);
+	filterpage.editdropdown_method();
+	Thread.sleep(3000);
+	filterpage.select_editdropdown_option__method();
+	Thread.sleep(3000);
+	filterpage.scoresdropdown_method();
+	Thread.sleep(3000);
+	filterpage.select_scoresdropdown_option_method();
+	Thread.sleep(3000);
+	filterpage.Donebutton_method();
+}
+
+public void addsection_report_RemoveReport() throws InterruptedException 
+{
+	filterpage.MoreDropdown_method();
+	Thread.sleep(3000);
+	filterpage.addSection_method();
+	Thread.sleep(3000);
+	filterpage.addSection_survey_method();
+	Thread.sleep(3000);
+	filterpage.addedSurvey_threeDot_method();
+	Thread.sleep(3000);
+	filterpage.removeButton_method();
+}
+public void benchmark_reportlink() throws InterruptedException 
+{
+	filterpage.click_benchmark_link_method();
+	Thread.sleep(3000);
+	filterpage.benchmark_text_method();
+	Thread.sleep(3000);
+	filterpage.select_internal_benchmark_method();
+	Thread.sleep(3000);
+	filterpage.select_external_benchmark_method();
+	Thread.sleep(3000);
+	filterpage.click_doneButton_benchmark_method();
+	Thread.sleep(3000);
+	filterpage.click_exportButton_method();
+	Thread.sleep(3000);
+	filterpage.click_exportPPT_method();
+}
 }
