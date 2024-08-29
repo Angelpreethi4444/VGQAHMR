@@ -175,11 +175,11 @@ WebElement benchmark_link;
 @CacheLookup
 WebElement benchmark_text;
  
-@FindBy(how = How.XPATH, using="(//div[@class='radioOption ng-star-inserted'])[3]")
+@FindBy(how = How.XPATH, using="(//input[@type='radio'])[9]")
 @CacheLookup
 WebElement internal_benchmarkt;
 
-@FindBy(how = How.XPATH, using="(//label[@class='radioLabel'])[10]")
+@FindBy(how = How.XPATH, using="(//label[@class='radioLabel'])[11]")
 @CacheLookup
 WebElement external_benchmarkt;
 
@@ -192,16 +192,42 @@ WebElement Donebutton_benchmark;
 @CacheLookup
 WebElement exportButton;
 
-@FindBy(how = How.XPATH, using="//li[@id='option0']")
+@FindBy(how = How.XPATH, using="//li[@id='option1']")
 @CacheLookup
 WebElement export_PPT;
+
+                                             //settings
+@FindBy(how = How.XPATH, using="//button[@aria-label='Settings']")
+@CacheLookup
+WebElement settings_icon;
+
+@FindBy(how = How.XPATH, using="//button[@data-id='slideyClose_SECTION_EDIT_SLIDEY']")
+@CacheLookup
+WebElement close_icon;
+
+                                            // changing manager to mother name dropdown
+@FindBy(how = How.XPATH, using="(//div[@aria-haspopup='listbox'])[7]")
+@CacheLookup
+WebElement Manager_dropdown;
+
+public WebElement managerdropdown_button()
+{
+    WebElement mbutton = driver.findElement(By.xpath("(//div[@aria-haspopup='listbox'])[7]"));
+     return mbutton;
+}
+
+@FindBy(how = How.ID, using="option96")
+@CacheLookup
+WebElement Mothername_dropdown;
+
+
                                                    //view report method
 
 public void click_Qus_Basepay() throws InterruptedException 
 {
 	
 	JavascriptExecutor js = (JavascriptExecutor) driver;
-    js.executeScript("window.scrollBy(0,250)", "");
+    js.executeScript("window.scrollBy(0,350)", "");
     
     Thread.sleep(3000);
     
@@ -251,7 +277,6 @@ public void click_doneBtton()
 {
 	doneButton.click();
 }
-
 public void click_closefiltericon() 
 {
 	closefilterIcon.click();
@@ -398,6 +423,8 @@ public void select_internal_benchmark_method()
 }
 public void select_external_benchmark_method() 
 {
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,500)", "");
 	external_benchmarkt.click();
 }
 public void click_doneButton_benchmark_method() 
@@ -412,5 +439,40 @@ public void click_exportButton_method()
 public void click_exportPPT_method() 
 {
 	export_PPT.click();
+}
+
+                                         //settings method
+public void click_settingIcon_method()
+{
+	settings_icon.click();
+}
+public void click_closeIcon_method() throws InterruptedException 
+{
+	Thread.sleep(3000);
+    WebElement frame3 = driver.findElement(By.xpath("(//iframe[@class='resizeDetector'])[3]"));
+	
+	driver.switchTo().frame(frame3).getTitle();
+	
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,1000)", "");
+    
+    JavascriptExecutor js1 = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,-1000)", "");
+   
+	close_icon.click();
+}
+                                       // manager to mather data method
+
+public void click_managerDropdown_method()
+{
+	Manager_dropdown.click();
+}
+public void select_motherName_method() throws InterruptedException
+{
+	Mothername_dropdown.click();
+}
+public void click_managerDropdown()
+{
+	managerdropdown_button().click();
 }
 }

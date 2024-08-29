@@ -51,7 +51,6 @@ public void TakeAction_Goal() throws InterruptedException
 	takeAction_method();
 	Thread.sleep(3000);
     get_GoalTitle();
-    Thread.sleep(3000);
     driver.navigate().back();
     driver.navigate().refresh();
 }
@@ -131,5 +130,21 @@ public void Add_benchmarklinkReport() throws InterruptedException
 	open_heatmapReport();
 	changesurevy_method();
 	benchmark_reportlink();
+}
+@Test
+public void openSettings_closeSettings() throws InterruptedException
+{
+	open_heatmapReport();
+	changesurevy_method();
+	Settings_Close_Report();
+}
+@Test
+public void changingDropdown_saveData_GetText() throws InterruptedException
+{
+	open_heatmapReport();
+	changesurevy_method();
+	choose_ManagerTo_MotherName();
+	saveAS_Report_method();
+	get_saved_ReportText();
 }
 }

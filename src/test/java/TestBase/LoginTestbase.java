@@ -73,7 +73,7 @@ public void open_heatmapReport() throws InterruptedException
 {
 	Thread.sleep(5000);
 	
-	report.click_reportsDashboard();
+	report.set_reportDashboradbutton();
 	driver.navigate().refresh();
 	report.searchSurvey_method("Recurring survey-20191113");
 	Thread.sleep(5000);
@@ -106,11 +106,11 @@ public void viewReport_method() throws InterruptedException
 
 public void takeAction_method() throws InterruptedException 
 {
-	Thread.sleep(5000);
+	Thread.sleep(3000);
 	
 	filterpage.click_Qus_Basepay();
 	
-	Thread.sleep(5000); 
+	Thread.sleep(3000); 
 	
 	filterpage.click_takeAction();
 }
@@ -140,15 +140,15 @@ public void saveAS_Report_method() throws InterruptedException
 	savereportpage.click_saveAsDropdown();
 	savereportpage.click_saveAsButton();
 	Thread.sleep(3000);
-	savereportpage.Add_reportName("R75 REPORT");
+	savereportpage.Add_reportName("Mothers Name Report Data");
 	savereportpage.Click_saveButton();
 	Thread.sleep(3000);
-	savereportpage.Click_goBack();
+     savereportpage.click_goBack_button();
 }
 
 public void deletereport() throws InterruptedException 
 {
-	report.click_reportsDashboard();
+	report.set_reportDashboradbutton();
 	report.reportcount_method();
 	Thread.sleep(3000);
 	report.nextbutton_method();
@@ -228,5 +228,29 @@ public void benchmark_reportlink() throws InterruptedException
 	filterpage.click_exportButton_method();
 	Thread.sleep(3000);
 	filterpage.click_exportPPT_method();
+}
+public void Settings_Close_Report() throws InterruptedException 
+{
+	filterpage.click_settingIcon_method();
+	Thread.sleep(3000);
+	filterpage.click_closeIcon_method();
+}
+
+public void choose_ManagerTo_MotherName() throws InterruptedException 
+{
+	filterpage.click_managerDropdown();
+	Thread.sleep(3000);
+	filterpage.select_motherName_method();
+	Thread.sleep(3000);
+	filterpage.click_managerDropdown();
+}
+
+public void get_saved_ReportText() throws InterruptedException 
+{
+	report.set_reportDashboradbutton();
+	Thread.sleep(3000);
+	report.click_bookmark_method();
+	Thread.sleep(3000);
+	report.get_savedreport_text_method();
 }
 }

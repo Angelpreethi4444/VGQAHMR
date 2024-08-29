@@ -22,7 +22,7 @@ public class FocusArea_Heatmap_pageobject {
 	
                                          // WebElement Declarations
 	
-@FindBy(how=How.XPATH,using="//textarea[@class='goalTitle ng-pristine ng-valid ng-star-inserted ng-touched']")
+@FindBy(how=How.XPATH,using="//textarea[@data-id='goalTitle']")
 @CacheLookup
 WebElement Focusarea_title;
 

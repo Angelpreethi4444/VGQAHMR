@@ -6,7 +6,7 @@
       <class name="HeatMap_TestFunction.Login_Testfuction">
         <methods>
           <include name="launchBrowser"/>
-          <include name="get_Ungrouped_qus"/>
+          <include name="changingDropdown_saveData_GetText"/>
         </methods>
       </class> <!-- HeatMap_TestFunction.Login_Testfuction -->
     </classes>

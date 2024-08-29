@@ -1,5 +1,6 @@
 package HeatMap_Pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,12 +52,30 @@ WebElement nextbutton;
 @CacheLookup
 WebElement reportcount;
 
+@FindBy(how = How.XPATH, using="(//button[@aria-label='bookmark'])[1]")
+@CacheLookup
+WebElement bookmark;
+
+@FindBy(how = How.XPATH, using="(//tr[@data-id='savedReportRow'])[1]")
+@CacheLookup
+WebElement savedReport_text;
 
 
-public void click_reportsDashboard() 
+//public void click_reportsDashboard() 
+//{
+//	reportsDashboard.click();
+//}
+
+
+public WebElement reportsDashboard_button()
 {
-	reportsDashboard.click();
+    WebElement rdbutton = driver.findElement(By.id("tab-4"));
+     return rdbutton;
 }
+
+
+
+
 public void searchSurvey_method(String surveyname) 
 {
 	searchSurvey.sendKeys(surveyname);
@@ -93,7 +112,19 @@ public void reportcount_method()
 {
 	System.out.println(reportcount.getText());
 }
-
-
+public void click_bookmark_method() 
+{
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("window.scrollBy(0,750)", "");
+	bookmark.click();
+}
+public void get_savedreport_text_method() 
+{
+	System.out.println(savedReport_text.getText());
+}
+public void set_reportDashboradbutton()
+{
+	reportsDashboard_button().click();
+}
 
 }

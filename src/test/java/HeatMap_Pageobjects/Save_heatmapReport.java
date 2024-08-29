@@ -44,6 +44,12 @@ WebElement saveButton;
 @CacheLookup
 WebElement goBackButton;
 
+public WebElement goBack_button()
+{
+    WebElement gBbutton = driver.findElement(By.xpath("//span[text()='Go Back']"));
+     return gBbutton;
+}
+
 @FindBy(how= How.XPATH, using="//h3[text()='Base Pay Satisfaction Historical Trend']")
 @CacheLookup
 WebElement goal_text1;
@@ -107,6 +113,9 @@ public void Click_goBack()
 {
 	goBackButton.click();
 }
-
+public void click_goBack_button()
+{
+	goBack_button().click();
+}
 
 }
